@@ -6,17 +6,15 @@ namespace LISTING_1_1_Creating_a_thread_with_the_Thread_class
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             Thread t = new Thread(new ThreadStart(Threads.ThreadMethod));
             t.Start();
-
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 10; i++)
             {
-                System.Console.WriteLine( "Main thread: Do some work.");
-                Thread.Sleep(0);
+                Console.WriteLine("Main thread: Do some work.");
+                Thread.Sleep(2000);
             }
-
             t.Join();
         }
     }
