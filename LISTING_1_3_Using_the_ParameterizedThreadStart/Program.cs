@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Threading;
+using LISTING_1_3_Using_the_ParameterizedThreadStart.Models;
 
 namespace LISTING_1_3_Using_the_ParameterizedThreadStart
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Thread t = new Thread(new ParameterizedThreadStart(Threads.ThreadMethod));
+            t.Start(5);
+            t.Join();
         }
     }
 }
