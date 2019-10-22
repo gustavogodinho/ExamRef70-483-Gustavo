@@ -1,12 +1,32 @@
 ﻿using System;
+using System.Threading;
+using LISTING_1_6_Using_ThreadLocal_T_.Models;
 
 namespace LISTING_1_6_Using_ThreadLocal_T_
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+           new Thread(() => 
+           {
+               for (int x = 0; x < Threads._field.Value; x ++)
+               {
+                    Console.WriteLine("Thread A: {0}", x); 
+               }
+           } 
+           ).Start();
+
+            new Thread(() =>                 
+            {                     
+                for (int x = 0; x < Threads._field.Value; x++)
+                {
+                    Console.WriteLine("Thread B: {0}", x);
+                } 
+            }).Start(); 
+          Console.ReadKey();         
+        }  
     }
 }
+
