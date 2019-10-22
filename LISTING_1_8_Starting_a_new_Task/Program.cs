@@ -1,12 +1,26 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace LISTING_1_8_Starting_a_new_Task
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Task t = Task.Run(() =>
+            {
+                for (int x = 0; x < 100; x++)
+                {
+                    Console.WriteLine(x);
+                }
+
+            }
+            );
+
+            t.Wait();
+
+            Console.ReadKey();
+
         }
     }
 }
