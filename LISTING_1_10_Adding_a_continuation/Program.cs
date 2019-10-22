@@ -1,12 +1,28 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace LISTING_1_10_Adding_a_continuation
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Task<int> t = Task.Run(() =>
+            {
+                return 42;
+            }).ContinueWith((i) =>
+            {
+                return i.Result * 2;
+            }).ContinueWith((x) =>
+            {
+                return x.Result - 80;
+            }
+            );
+
+            Console.WriteLine(t.Result);
+            Console.ReadKey();
+
+
         }
     }
 }
